@@ -2,15 +2,16 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>TechStore | Secure Purchase</title>
+<title>TechStore | PC & Laptop Store</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
 :root {
-  --primary: #1e40af;
-  --accent: #16a34a;
-  --dark: #0f172a;
-  --bg: #f4f6f8;
+  --bg: #020617;
+  --card: #0f172a;
+  --text: #e5e7eb;
+  --primary: #38bdf8;
+  --accent: #22c55e;
 }
 
 * {
@@ -21,14 +22,13 @@
 body {
   margin: 0;
   background: var(--bg);
-  color: #111;
+  color: var(--text);
 }
 
-/* HEADER */
 header {
-  background: var(--dark);
-  color: #fff;
+  background: #020617;
   padding: 25px 40px;
+  border-bottom: 1px solid #1e293b;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -36,33 +36,29 @@ header {
 
 header h1 {
   margin: 0;
-  font-size: 24px;
+  color: var(--primary);
 }
 
 header span {
-  font-size: 14px;
   opacity: 0.8;
+  font-size: 14px;
 }
 
-/* HERO */
 .hero {
-  background: linear-gradient(135deg, var(--primary), #1e3a8a);
-  color: white;
   padding: 80px 30px;
   text-align: center;
+  background: linear-gradient(135deg, #020617, #020617, #0f172a);
 }
 
 .hero h2 {
-  font-size: 38px;
+  font-size: 40px;
   margin-bottom: 10px;
 }
 
 .hero p {
-  font-size: 16px;
-  opacity: 0.9;
+  opacity: 0.8;
 }
 
-/* PRODUCTS */
 .products {
   max-width: 1200px;
   margin: auto;
@@ -73,11 +69,10 @@ header span {
 }
 
 .product {
-  background: white;
-  border-radius: 12px;
+  background: var(--card);
+  border-radius: 14px;
   padding: 20px;
-  text-align: center;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.12);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.4);
 }
 
 .product img {
@@ -95,43 +90,30 @@ header span {
   color: var(--accent);
   font-size: 20px;
   font-weight: bold;
-  margin-bottom: 15px;
 }
 
 .product button {
+  width: 100%;
+  margin-top: 15px;
   background: var(--primary);
-  color: white;
   border: none;
-  padding: 12px 18px;
+  padding: 12px;
   border-radius: 8px;
   cursor: pointer;
   font-size: 15px;
 }
 
-/* MODAL */
-.modal {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.6);
-}
-
-.modal-box {
-  background: white;
-  max-width: 420px;
-  margin: 8% auto;
+/* PURCHASE PAGE */
+.purchase {
+  max-width: 480px;
+  margin: 60px auto;
+  background: var(--card);
   padding: 30px;
-  border-radius: 12px;
+  border-radius: 14px;
 }
 
-.modal-box h2 {
-  margin-top: 0;
-}
-
-.close {
-  float: right;
-  cursor: pointer;
-  font-weight: bold;
+.purchase h2 {
+  text-align: center;
 }
 
 input {
@@ -139,7 +121,7 @@ input {
   padding: 12px;
   margin: 10px 0;
   border-radius: 6px;
-  border: 1px solid #ccc;
+  border: none;
 }
 
 .qr {
@@ -148,23 +130,23 @@ input {
   margin: 20px auto;
 }
 
-.confirm {
+.submit {
   background: var(--accent);
-  color: white;
+  color: #000;
   border: none;
-  padding: 12px;
   width: 100%;
+  padding: 12px;
   border-radius: 8px;
   font-size: 16px;
-  cursor: pointer;
 }
 
-footer {
-  background: var(--dark);
-  color: white;
+.success {
   text-align: center;
+  background: #052e16;
   padding: 20px;
-  font-size: 14px;
+  border-radius: 10px;
+  margin: 40px auto;
+  max-width: 500px;
 }
 </style>
 </head>
@@ -173,88 +155,84 @@ footer {
 
 <header>
   <h1>TechStore</h1>
-  <span>Trusted Tech Solutions</span>
+  <span>Professional PC & Laptop Solutions</span>
 </header>
 
+<!-- Hero Section -->
 <section class="hero">
-  <h2>Premium Technology Products</h2>
+  <h2>High Performance PCs & Laptops</h2>
   <p>Secure payment via Malaysia National QR</p>
 </section>
 
+<!-- Products -->
 <section class="products">
   <div class="product">
-    <img src="https://via.placeholder.com/400x250">
+    <img src="https://via.placeholder.com/400x250" alt="Laptop Pro">
     <h3>Laptop Pro</h3>
-    <div class="price">RM 3,999</div>
-    <button onclick="purchase('Laptop Pro', '3999')">Buy Now</button>
+    <div class="price">RM 3999</div>
+    <button onclick="showPurchase('Laptop Pro', 3999)">Buy Now</button>
   </div>
 
   <div class="product">
-    <img src="https://via.placeholder.com/400x250">
-    <h3>Gaming Mouse</h3>
-    <div class="price">RM 149</div>
-    <button onclick="purchase('Gaming Mouse', '149')">Buy Now</button>
+    <img src="https://via.placeholder.com/400x250" alt="Gaming Laptop">
+    <h3>Gaming Laptop</h3>
+    <div class="price">RM 5499</div>
+    <button onclick="showPurchase('Gaming Laptop', 5499)">Buy Now</button>
+  </div>
+
+  <div class="product">
+    <img src="https://via.placeholder.com/400x250" alt="Custom Gaming PC">
+    <h3>Custom Gaming PC</h3>
+    <div class="price">RM 6299</div>
+    <button onclick="showPurchase('Custom Gaming PC', 6299)">Buy Now</button>
   </div>
 </section>
 
-<!-- PAYMENT MODAL -->
-<div class="modal" id="modal">
-  <div class="modal-box">
-    <span class="close" onclick="closeModal()">✕</span>
-    <h2>Complete Your Payment</h2>
+<!-- Purchase Form -->
+<div class="purchase" id="purchaseForm" style="display:none;">
+  <h2>Complete Payment</h2>
 
-    <input id="custName" placeholder="Full Name">
-    <input id="custEmail" placeholder="Email Address">
+  <p><strong>Product:</strong> <span id="productName"></span></p>
+  <p><strong>Amount:</strong> RM <span id="productPrice"></span></p>
 
-    <p id="orderText"></p>
+  <img class="qr"
+       src="https://onedrive.live.com/embed?resid=1ABB0EFD8FA6BC4D!110&authkey=!AOdeu80bEdbvqLV"
+       alt="QR Payment">
 
-    <!-- YOUR QR IMAGE -->
-    <img src="qr.png" class="qr" alt="QR Payment">
+  <form onsubmit="showSuccess(event)">
+    <input type="hidden" id="productInput">
+    <input type="hidden" id="priceInput">
 
-    <button class="confirm" onclick="sendOrder()">I Have Completed Payment</button>
-  </div>
+    <input name="name" placeholder="Full Name" required>
+    <input name="phone" placeholder="Phone Number" required>
+    <input name="email" type="email" placeholder="Email Address" required>
+    <input name="date" type="date" required>
+    <input name="time" type="time" required>
+
+    <button class="submit" type="submit">I Have Completed Payment</button>
+  </form>
 </div>
 
-<footer>
-  © 2025 TechStore • Payments to Soo Wen Loong
-</footer>
+<!-- Success Message -->
+<div class="success" id="successMsg" style="display:none;">
+  <h2>✅ Payment Submitted</h2>
+  <p>Thank you. We will contact you shortly.</p>
+</div>
 
 <script>
-let product = "";
-let price = "";
-
-function purchase(p, amt) {
-  product = p;
-  price = amt;
-  document.getElementById("orderText").innerHTML =
-    `<strong>Order:</strong> ${p}<br><strong>Amount:</strong> RM ${amt}`;
-  document.getElementById("modal").style.display = "block";
+function showPurchase(product, price) {
+  document.getElementById('purchaseForm').style.display = 'block';
+  document.getElementById('productName').textContent = product;
+  document.getElementById('productPrice').textContent = price;
+  document.getElementById('productInput').value = product;
+  document.getElementById('priceInput').value = price;
+  window.scrollTo(0, document.getElementById('purchaseForm').offsetTop);
 }
 
-function closeModal() {
-  document.getElementById("modal").style.display = "none";
-}
-
-function sendOrder() {
-  const name = document.getElementById("custName").value;
-  const email = document.getElementById("custEmail").value;
-
-  const body =
-`New Purchase Order - TechStore
-
-Customer Name: ${name}
-Customer Email: ${email}
-
-Product: ${product}
-Amount Paid: RM ${price}
-
-Payment Method: Malaysia National QR
-`;
-
-  window.location.href =
-    "mailto:wenloong8@gmail.com" +
-    "?subject=New TechStore Purchase" +
-    "&body=" + encodeURIComponent(body);
+function showSuccess(event) {
+  event.preventDefault();
+  document.getElementById('purchaseForm').style.display = 'none';
+  document.getElementById('successMsg').style.display = 'block';
 }
 </script>
 
