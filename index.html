@@ -1,246 +1,261 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>TechStore | Online Shop</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<title>TechStore | Secure Purchase</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    :root {
-      --bg: #f4f6f8;
-      --text: #1f2933;
-      --primary: #2563eb;
-      --secondary: #0f172a;
-      --card: #ffffff;
-      --accent: #16a34a;
-    }
+<style>
+:root {
+  --primary: #1e40af;
+  --accent: #16a34a;
+  --dark: #0f172a;
+  --bg: #f4f6f8;
+}
 
-    body.dark {
-      --bg: #020617;
-      --text: #e5e7eb;
-      --primary: #38bdf8;
-      --secondary: #020617;
-      --card: #0f172a;
-      --accent: #22c55e;
-    }
+* {
+  box-sizing: border-box;
+  font-family: "Segoe UI", Arial, sans-serif;
+}
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: Arial, sans-serif;
-    }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: #111;
+}
 
-    body {
-      background: var(--bg);
-      color: var(--text);
-      transition: 0.3s;
-    }
+/* HEADER */
+header {
+  background: var(--dark);
+  color: #fff;
+  padding: 25px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
-    header {
-      background: var(--secondary);
-      color: #fff;
-      padding: 20px 40px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+header h1 {
+  margin: 0;
+  font-size: 24px;
+}
 
-    nav a {
-      color: #fff;
-      text-decoration: none;
-      margin-left: 20px;
-      font-weight: bold;
-    }
+header span {
+  font-size: 14px;
+  opacity: 0.8;
+}
 
-    nav button {
-      margin-left: 20px;
-      padding: 6px 12px;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      background: var(--primary);
-      color: #fff;
-    }
+/* HERO */
+.hero {
+  background: linear-gradient(135deg, var(--primary), #1e3a8a);
+  color: white;
+  padding: 80px 30px;
+  text-align: center;
+}
 
-    section {
-      padding: 60px 40px;
-      max-width: 1200px;
-      margin: auto;
-    }
+.hero h2 {
+  font-size: 38px;
+  margin-bottom: 10px;
+}
 
-    #home {
-      background: linear-gradient(135deg, var(--primary), #1e40af);
-      color: #fff;
-      text-align: center;
-      padding: 100px 40px;
-    }
+.hero p {
+  font-size: 16px;
+  opacity: 0.9;
+}
 
-    #home h2 {
-      font-size: 40px;
-      margin-bottom: 15px;
-    }
+/* PRODUCTS */
+.products {
+  max-width: 1200px;
+  margin: auto;
+  padding: 60px 30px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
+}
 
-    .products {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 25px;
-      margin-top: 30px;
-    }
+.product {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.12);
+}
 
-    .product {
-      background: var(--card);
-      padding: 20px;
-      border-radius: 10px;
-      text-align: center;
-      box-shadow: 0 6px 16px rgba(0,0,0,0.15);
-    }
+.product img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 10px;
+}
 
-    .product img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-      border-radius: 8px;
-    }
+.product h3 {
+  margin: 15px 0 5px;
+}
 
-    .price {
-      color: var(--accent);
-      font-weight: bold;
-      font-size: 18px;
-      margin: 10px 0;
-    }
+.price {
+  color: var(--accent);
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
 
-    .product button {
-      background: var(--primary);
-      color: #fff;
-      border: none;
-      padding: 10px 16px;
-      border-radius: 6px;
-      cursor: pointer;
-    }
+.product button {
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 12px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 15px;
+}
 
-    form {
-      max-width: 500px;
-      margin-top: 20px;
-    }
+/* MODAL */
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+}
 
-    form input, form select, form textarea {
-      width: 100%;
-      padding: 12px;
-      margin-bottom: 15px;
-      border-radius: 6px;
-      border: 1px solid #ccc;
-    }
+.modal-box {
+  background: white;
+  max-width: 420px;
+  margin: 8% auto;
+  padding: 30px;
+  border-radius: 12px;
+}
 
-    form button {
-      width: 100%;
-      background: var(--primary);
-      color: #fff;
-      border: none;
-      padding: 12px;
-      border-radius: 6px;
-      cursor: pointer;
-      font-size: 16px;
-    }
+.modal-box h2 {
+  margin-top: 0;
+}
 
-    footer {
-      background: var(--secondary);
-      color: #fff;
-      text-align: center;
-      padding: 20px;
-      margin-top: 40px;
-    }
+.close {
+  float: right;
+  cursor: pointer;
+  font-weight: bold;
+}
 
-    @media (max-width: 600px) {
-      header {
-        flex-direction: column;
-        gap: 10px;
-      }
-    }
-  </style>
+input {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.qr {
+  width: 260px;
+  display: block;
+  margin: 20px auto;
+}
+
+.confirm {
+  background: var(--accent);
+  color: white;
+  border: none;
+  padding: 12px;
+  width: 100%;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+footer {
+  background: var(--dark);
+  color: white;
+  text-align: center;
+  padding: 20px;
+  font-size: 14px;
+}
+</style>
 </head>
+
 <body>
 
 <header>
   <h1>TechStore</h1>
-  <nav>
-    <a href="#home">Home</a>
-    <a href="#products">Products</a>
-    <a href="#order">Order</a>
-    <button onclick="toggleDark()">🌙 Dark</button>
-  </nav>
+  <span>Trusted Tech Solutions</span>
 </header>
 
-<section id="home">
-  <h2>Premium Tech Products</h2>
-  <p>Reliable laptops, accessories and gaming gear for everyone.</p>
+<section class="hero">
+  <h2>Premium Technology Products</h2>
+  <p>Secure payment via Malaysia National QR</p>
 </section>
 
-<section id="products">
-  <h2>Our Products</h2>
+<section class="products">
+  <div class="product">
+    <img src="https://via.placeholder.com/400x250">
+    <h3>Laptop Pro</h3>
+    <div class="price">RM 3,999</div>
+    <button onclick="purchase('Laptop Pro', '3999')">Buy Now</button>
+  </div>
 
-  <div class="products">
-    <div class="product">
-      <img src="https://via.placeholder.com/400x250">
-      <h3>Laptop Pro</h3>
-      <div class="price">RM 3,999</div>
-      <button>Add to Cart</button>
-    </div>
-
-    <div class="product">
-      <img src="https://via.placeholder.com/400x250">
-      <h3>Gaming Laptop</h3>
-      <div class="price">RM 5,499</div>
-      <button>Add to Cart</button>
-    </div>
-
-    <div class="product">
-      <img src="https://via.placeholder.com/400x250">
-      <h3>Mechanical Keyboard</h3>
-      <div class="price">RM 299</div>
-      <button>Add to Cart</button>
-    </div>
-
-    <div class="product">
-      <img src="https://via.placeholder.com/400x250">
-      <h3>Gaming Mouse</h3>
-      <div class="price">RM 149</div>
-      <button>Add to Cart</button>
-    </div>
+  <div class="product">
+    <img src="https://via.placeholder.com/400x250">
+    <h3>Gaming Mouse</h3>
+    <div class="price">RM 149</div>
+    <button onclick="purchase('Gaming Mouse', '149')">Buy Now</button>
   </div>
 </section>
 
-<section id="order">
-  <h2>Place an Order</h2>
+<!-- PAYMENT MODAL -->
+<div class="modal" id="modal">
+  <div class="modal-box">
+    <span class="close" onclick="closeModal()">✕</span>
+    <h2>Complete Your Payment</h2>
 
-  <form action="send_order.php" method="POST">
-    <input type="text" name="name" placeholder="Your Name" required>
-    <input type="email" name="email" placeholder="Your Email" required>
+    <input id="custName" placeholder="Full Name">
+    <input id="custEmail" placeholder="Email Address">
 
-    <select name="product" required>
-      <option value="">Select Product</option>
-      <option>Laptop Pro</option>
-      <option>Gaming Laptop</option>
-      <option>Mechanical Keyboard</option>
-      <option>Gaming Mouse</option>
-    </select>
+    <p id="orderText"></p>
 
-    <input type="number" name="quantity" placeholder="Quantity" min="1" required>
+    <!-- YOUR QR IMAGE -->
+    <img src="qr.png" class="qr" alt="QR Payment">
 
-    <textarea name="message" rows="4" placeholder="Extra notes (optional)"></textarea>
-
-    <button type="submit">Submit Order</button>
-  </form>
-</section>
+    <button class="confirm" onclick="sendOrder()">I Have Completed Payment</button>
+  </div>
+</div>
 
 <footer>
-  <p>© 2025 TechStore. All rights reserved.</p>
+  © 2025 TechStore • Payments to Soo Wen Loong
 </footer>
 
 <script>
-  function toggleDark() {
-    document.body.classList.toggle("dark");
-  }
+let product = "";
+let price = "";
+
+function purchase(p, amt) {
+  product = p;
+  price = amt;
+  document.getElementById("orderText").innerHTML =
+    `<strong>Order:</strong> ${p}<br><strong>Amount:</strong> RM ${amt}`;
+  document.getElementById("modal").style.display = "block";
+}
+
+function closeModal() {
+  document.getElementById("modal").style.display = "none";
+}
+
+function sendOrder() {
+  const name = document.getElementById("custName").value;
+  const email = document.getElementById("custEmail").value;
+
+  const body =
+`New Purchase Order - TechStore
+
+Customer Name: ${name}
+Customer Email: ${email}
+
+Product: ${product}
+Amount Paid: RM ${price}
+
+Payment Method: Malaysia National QR
+`;
+
+  window.location.href =
+    "mailto:wenloong8@gmail.com" +
+    "?subject=New TechStore Purchase" +
+    "&body=" + encodeURIComponent(body);
+}
 </script>
 
 </body>
