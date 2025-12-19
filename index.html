@@ -222,8 +222,9 @@ input{
     <div id="qrBox" style="display:none;">
       <p style="text-align:center;margin-top:14px;">Scan QR to pay</p>
       <img
-        src="https://1drv.ms/i/c/1abb0efd8fa6bc4d/IQBl-Q0Kh7NDSrjrS9Zf9JWdAadKlsv1z9kE4jmqEN9fpiU?e=oUIYRS"
-        class="qr.png"
+        src="https://1drv.ms/i/c/1abb0efd8fa6bc4d/IQBl-Q0Kh7NDSrjrS9Zf9JWdAadKlsv1z9kE4jmqEN9fpiU?download=1"
+        class="qr-img"
+        alt="DuitNow QR"
       >
       <button class="pay-btn" onclick="done()">I Have Paid</button>
     </div>
@@ -253,6 +254,10 @@ input{
 </div>
 
 <script>
+const qrBox = document.getElementById('qrBox');
+const bankBox = document.getElementById('bankBox');
+const successMsg = document.getElementById('successMsg');
+
 function openModal(name,price){
   document.getElementById("productTitle").innerText =
     name + " - RM " + price;
