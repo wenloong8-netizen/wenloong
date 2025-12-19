@@ -2,151 +2,176 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>TechStore | PC & Laptop Store</title>
+<title>TechStore | Professional Dark Shop</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-:root {
-  --bg: #020617;
-  --card: #0f172a;
-  --text: #e5e7eb;
-  --primary: #38bdf8;
-  --accent: #22c55e;
+:root{
+  --bg:#0b1220;
+  --card:#141c2f;
+  --text:#e5e7eb;
+  --primary:#38bdf8;
+  --accent:#22c55e;
 }
 
-* {
-  box-sizing: border-box;
-  font-family: "Segoe UI", Arial, sans-serif;
+*{box-sizing:border-box;font-family:"Segoe UI",Arial,sans-serif}
+
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
 }
 
-body {
-  margin: 0;
-  background: var(--bg);
-  color: var(--text);
+header{
+  padding:24px 40px;
+  border-bottom:1px solid #1f2937;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
 }
 
-header {
-  background: #020617;
-  padding: 25px 40px;
-  border-bottom: 1px solid #1e293b;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+header h1{
+  margin:0;
+  color:var(--primary);
 }
 
-header h1 {
-  margin: 0;
-  color: var(--primary);
+header span{
+  opacity:.75;
+  font-size:14px;
 }
 
-header span {
-  opacity: 0.8;
-  font-size: 14px;
+.products{
+  max-width:1200px;
+  margin:50px auto;
+  padding:0 30px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:30px;
 }
 
-.hero {
-  padding: 80px 30px;
-  text-align: center;
-  background: linear-gradient(135deg, #020617, #020617, #0f172a);
+.product{
+  background:var(--card);
+  padding:20px;
+  border-radius:16px;
+  box-shadow:0 20px 40px rgba(0,0,0,.45);
 }
 
-.hero h2 {
-  font-size: 40px;
-  margin-bottom: 10px;
+.product img{
+  width:100%;
+  height:180px;
+  object-fit:cover;
+  border-radius:12px;
 }
 
-.hero p {
-  opacity: 0.8;
+.product h3{margin:16px 0 6px}
+
+.price{
+  color:var(--accent);
+  font-size:20px;
+  font-weight:700;
 }
 
-.products {
-  max-width: 1200px;
-  margin: auto;
-  padding: 60px 30px;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 30px;
+.product button{
+  width:100%;
+  margin-top:14px;
+  padding:12px;
+  border:none;
+  border-radius:10px;
+  background:var(--primary);
+  font-size:15px;
+  cursor:pointer;
 }
 
-.product {
-  background: var(--card);
-  border-radius: 14px;
-  padding: 20px;
-  box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+/* MODAL */
+.modal-bg{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.75);
+  display:none;
+  justify-content:center;
+  align-items:center;
+  z-index:999;
 }
 
-.product img {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
-  border-radius: 10px;
+.modal{
+  background:linear-gradient(145deg,#141c2f,#0f172a);
+  padding:30px;
+  border-radius:18px;
+  width:90%;
+  max-width:420px;
+  position:relative;
 }
 
-.product h3 {
-  margin: 15px 0 5px;
+.close{
+  position:absolute;
+  top:12px;
+  right:16px;
+  font-size:22px;
+  cursor:pointer;
 }
 
-.price {
-  color: var(--accent);
-  font-size: 20px;
-  font-weight: bold;
+.modal h2{
+  text-align:center;
+  margin-bottom:18px;
 }
 
-.product button {
-  width: 100%;
-  margin-top: 15px;
-  background: var(--primary);
-  border: none;
-  padding: 12px;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 15px;
+.pay-select{
+  display:flex;
+  gap:12px;
 }
 
-/* PURCHASE PAGE */
-.purchase {
-  max-width: 480px;
-  margin: 60px auto;
-  background: var(--card);
-  padding: 30px;
-  border-radius: 14px;
+.pay-select button{
+  flex:1;
+  padding:12px;
+  border:none;
+  border-radius:10px;
+  background:var(--primary);
+  color:#fff;
+  font-size:15px;
+  cursor:pointer;
 }
 
-.purchase h2 {
-  text-align: center;
+.qr-img{
+  width:220px;
+  display:block;
+  margin:20px auto;
 }
 
-input {
-  width: 100%;
-  padding: 12px;
-  margin: 10px 0;
-  border-radius: 6px;
-  border: none;
+input{
+  width:100%;
+  padding:11px;
+  margin:8px 0;
+  border-radius:8px;
+  border:none;
 }
 
-.qr {
-  width: 260px;
-  display: block;
-  margin: 20px auto;
+.pay-btn{
+  width:100%;
+  padding:12px;
+  margin-top:10px;
+  border:none;
+  border-radius:10px;
+  background:var(--accent);
+  color:#000;
+  font-size:16px;
+  cursor:pointer;
 }
 
-.submit {
-  background: var(--accent);
-  color: #000;
-  border: none;
-  width: 100%;
-  padding: 12px;
-  border-radius: 8px;
-  font-size: 16px;
+.bank-info{
+  background:#020617;
+  padding:12px;
+  border-radius:10px;
+  margin:10px 0;
+  font-size:14px;
 }
 
-.success {
-  text-align: center;
-  background: #052e16;
-  padding: 20px;
-  border-radius: 10px;
-  margin: 40px auto;
-  max-width: 500px;
+.success{
+  background:#052e16;
+  padding:18px;
+  border-radius:12px;
+  text-align:center;
+  margin-top:20px;
+  display:none;
 }
 </style>
 </head>
@@ -155,84 +180,109 @@ input {
 
 <header>
   <h1>TechStore</h1>
-  <span>Professional PC & Laptop Solutions</span>
+  <span>Secure PC & Laptop Shop</span>
 </header>
 
-<!-- Hero Section -->
-<section class="hero">
-  <h2>High Performance PCs & Laptops</h2>
-  <p>Secure payment via Malaysia National QR</p>
-</section>
-
-<!-- Products -->
 <section class="products">
   <div class="product">
-    <img src="https://via.placeholder.com/400x250" alt="Laptop Pro">
+    <img src="https://via.placeholder.com/400x250">
     <h3>Laptop Pro</h3>
     <div class="price">RM 3999</div>
-    <button onclick="showPurchase('Laptop Pro', 3999)">Buy Now</button>
+    <button onclick="openModal('Laptop Pro',3999)">Buy Now</button>
   </div>
 
   <div class="product">
-    <img src="https://via.placeholder.com/400x250" alt="Gaming Laptop">
+    <img src="https://via.placeholder.com/400x250">
     <h3>Gaming Laptop</h3>
     <div class="price">RM 5499</div>
-    <button onclick="showPurchase('Gaming Laptop', 5499)">Buy Now</button>
+    <button onclick="openModal('Gaming Laptop',5499)">Buy Now</button>
   </div>
 
   <div class="product">
-    <img src="https://via.placeholder.com/400x250" alt="Custom Gaming PC">
+    <img src="https://via.placeholder.com/400x250">
     <h3>Custom Gaming PC</h3>
     <div class="price">RM 6299</div>
-    <button onclick="showPurchase('Custom Gaming PC', 6299)">Buy Now</button>
+    <button onclick="openModal('Custom Gaming PC',6299)">Buy Now</button>
   </div>
 </section>
 
-<!-- Purchase Form -->
-<div class="purchase" id="purchaseForm" style="display:none;">
-  <h2>Complete Payment</h2>
+<!-- MODAL -->
+<div class="modal-bg" id="modalBg">
+  <div class="modal">
+    <div class="close" onclick="closeModal()">×</div>
 
-  <p><strong>Product:</strong> <span id="productName"></span></p>
-  <p><strong>Amount:</strong> RM <span id="productPrice"></span></p>
+    <h2 id="productTitle"></h2>
 
-  <img class="qr"
-       src="https://onedrive.live.com/embed?resid=1ABB0EFD8FA6BC4D!110&authkey=!AOdeu80bEdbvqLV"
-       alt="QR Payment">
+    <div class="pay-select">
+      <button onclick="showQR()">QR Payment</button>
+      <button onclick="showBank()">Bank Payment</button>
+    </div>
 
-  <form onsubmit="showSuccess(event)">
-    <input type="hidden" id="productInput">
-    <input type="hidden" id="priceInput">
+    <!-- QR -->
+    <div id="qrBox" style="display:none;">
+      <p style="text-align:center;margin-top:14px;">Scan QR to pay</p>
+      <img
+        src="https://1drv.ms/i/c/1abb0efd8fa6bc4d/IQBl-Q0Kh7NDSrjrS9Zf9JWdAadKlsv1z9kE4jmqEN9fpiU?e=oUIYRS"
+        class="qr.png"
+      >
+      <button class="pay-btn" onclick="done()">I Have Paid</button>
+    </div>
 
-    <input name="name" placeholder="Full Name" required>
-    <input name="phone" placeholder="Phone Number" required>
-    <input name="email" type="email" placeholder="Email Address" required>
-    <input name="date" type="date" required>
-    <input name="time" type="time" required>
+    <!-- BANK -->
+    <div id="bankBox" style="display:none;">
+      <div class="bank-info">
+        <strong>Transfer To:</strong><br>
+        Bank: Malaysia Bank<br>
+        Account Number: <b>01250779180</b><br>
+        Account Name: TechStore
+      </div>
 
-    <button class="submit" type="submit">I Have Completed Payment</button>
-  </form>
-</div>
+      <input placeholder="Your Bank Name">
+      <input placeholder="Your Account Number">
+      <input placeholder="Account Holder Name">
 
-<!-- Success Message -->
-<div class="success" id="successMsg" style="display:none;">
-  <h2>✅ Payment Submitted</h2>
-  <p>Thank you. We will contact you shortly.</p>
+      <button class="pay-btn" onclick="done()">Confirm Payment</button>
+    </div>
+
+    <div class="success" id="successMsg">
+      <h3>✅ Payment Submitted</h3>
+      <p>Thank you. We will verify and contact you shortly.</p>
+    </div>
+
+  </div>
 </div>
 
 <script>
-function showPurchase(product, price) {
-  document.getElementById('purchaseForm').style.display = 'block';
-  document.getElementById('productName').textContent = product;
-  document.getElementById('productPrice').textContent = price;
-  document.getElementById('productInput').value = product;
-  document.getElementById('priceInput').value = price;
-  window.scrollTo(0, document.getElementById('purchaseForm').offsetTop);
+function openModal(name,price){
+  document.getElementById("productTitle").innerText =
+    name + " - RM " + price;
+  document.getElementById("modalBg").style.display="flex";
+  reset();
 }
 
-function showSuccess(event) {
-  event.preventDefault();
-  document.getElementById('purchaseForm').style.display = 'none';
-  document.getElementById('successMsg').style.display = 'block';
+function closeModal(){
+  document.getElementById("modalBg").style.display="none";
+}
+
+function reset(){
+  qrBox.style.display="none";
+  bankBox.style.display="none";
+  successMsg.style.display="none";
+}
+
+function showQR(){
+  reset();
+  qrBox.style.display="block";
+}
+
+function showBank(){
+  reset();
+  bankBox.style.display="block";
+}
+
+function done(){
+  reset();
+  successMsg.style.display="block";
 }
 </script>
 
